@@ -1,0 +1,58 @@
+Name: Sfiraiala Maria
+Group: 314CA
+
+-------------------------------------------------------------------------------
+
+Now you see me - Project 1
+
+-------------------------------------------------------------------------------
+
+Description:
+
+- The projects aims to work with multiple decks, stored using doubly linked
+lists.
+- It applies a variety of operations: shuffle deck, merge decks, split deck or
+sort deck, to name a few. 
+- Each deck consists of multiple cards, identified by a value(an integer
+between 1 and 14) and a symbol ("HEART", "CLUB", "DIAMOND", "SPADE").
+- The user interacts with the programme using the command line, basically
+reading from standard input (after running the executable)
+- Later on, the input will be parsed and interpreted accordingly, not without
+the possiblity of being given an invalid command, in which case the user will
+be notified by an intuitive message.
+- A quite interesting feature is the way we handled errors: every command
+takes place after a few steps:
+    1. we read line by line from stdin (checking whether the line is empty);
+    2. we divide the input (or buffer) in 2 strings, one is the possible
+    opcode, the other is the rest of the input;
+    3. we check whether the opcode is valid (we support the command it
+    refers to);
+    4. now, we focus on the rest of the input;
+    5. we use sscanf() in order to read the expected arguments to the
+    operation;
+    6. we add an extra junk character to the sscanf() function in order to
+    verify if the arguments have a follow-up of garbage symbols;
+- When the input passes all this steps, the operation is valid.
+
+-------------------------------------------------------------------------------
+
+Observations regarding the project:
+
+- The implementation is quite generic, what could be more polished is the way
+we handle every function; a little more modularization would make the project
+look more professional, however this was not an easy job, since the string
+parsing is different depending on which command we apply.
+- When thinking about the time complexity, one can notice that most algorithms
+are linear, for the command only (in other words, ignoring the extra O(n) that
+is required when getting a certain node, that we will modify).
+- A very obvious exception is the sorting algorithm: insert / select sort has a
+time complexity of O(n^2), which could be optimized to a O(nlogn) with merge or
+quicksort.
+- The main takeaway from this project is that setting the links between nodes
+correctly is a must; one should pay attention, as this defines the most
+important data structure we used: a doubly linked list.
+- Personally, the most challenging part was the data structure implementation;
+not giving extra time to debugging the doubly linked list functions left me
+with a buggy, 600 lines code, that did not work!
+
+-------------------------------------------------------------------------------
